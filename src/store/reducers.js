@@ -27,12 +27,12 @@ import * as actions from "./actions";
  * Reducers JAMAIS DIRECTEMENT utilisés par le store !
  * -----------------------------------------------------------------------------
  */
-export const todosReducer = (state = [], currentAction) => {
+export const todos = (state = [], currentAction) => {
 
   switch ( currentAction.type ) {
 
     case actions.ADD_TODO:
-      return [ ...state.todos, currentAction.todoo ];
+      return [ ...state, currentAction.todo ];
 
     case actions.DELETE_TODO:
       return state.filter(( currentTodo, currentTodoIndex ) => 

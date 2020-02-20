@@ -3,10 +3,10 @@
  * CONSTANTE UNIQUE - (pour éviter toute erreur de typographie)
  * -----------------------------------------------------------------------------
 */
-export const ADD_TODO    = "ADD_TODO";
-export const DELETE_TODO = "DELETE_TODO";
-export const SET_FILTER  = "SET_FILTER";
-export const TOGGLE_TODO = "TOGGLE_TODO";
+export const ADD_TODO = 'add todo';
+export const DELETE_TODO = 'delete todo';
+export const SET_FILTER = 'set filter';
+export const TOGGLE_TODO = 'toggle todo';
 
 export const visibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
