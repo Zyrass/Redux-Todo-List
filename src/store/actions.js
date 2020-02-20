@@ -3,10 +3,10 @@
  * CONSTANTE UNIQUE - (pour éviter toute erreur de typographie)
  * -----------------------------------------------------------------------------
 */
-const ADD_TODO    = "ADD_TODO";
-const DELETE_TODO = "DELETE_TODO";
-const SET_FILTER  = "SET_FILTER";
-const TOGGLE_TODO = "TOGGLE_TODO";
+export const ADD_TODO    = "ADD_TODO";
+export const DELETE_TODO = "DELETE_TODO";
+export const SET_FILTER  = "SET_FILTER";
+export const TOGGLE_TODO = "TOGGLE_TODO";
 
 export const visibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
@@ -22,27 +22,27 @@ export const visibilityFilters = {
 export const addTodo = ( todo ) => {
   return {
     type: ADD_TODO,
-    todo
+    todo // Payload
   }
 }
 
 export const deleteTodo = ( index ) => {
   return {
     type: DELETE_TODO,
-    index
+    index // Payload
   }
 }
 
 export const setFilter = ( filter ) => {
   return {
     type: SET_FILTER,
-    filter
+    filter // Payload
   }
 }
 
 export const toggleTodo = ( index ) => {
   return {
     type: TOGGLE_TODO,
-    index
+    index // Payload
   }
 }
