@@ -1,3 +1,5 @@
+import * as actions from "./actions";
+
 /*
  * -----------------------------------------------------------------------------
  * SUPPOSONS QUE LE STATE RESSEMBLE A
@@ -20,45 +22,59 @@
  * -----------------------------------------------------------------------------
  */
 
-import * as actions from "./actions";
+/**
+ * -----------------------------------------------------------------------------
+ * Reducers JAMAIS DIRECTEMENT utilisés par le store !
+ * -----------------------------------------------------------------------------
+ */
+const todosReducer = (state, currentAction) => {
 
-export const todoReducer = (state, action) => {
-
-  switch ( action.type ) {
+  switch ( currentAction.type ) {
 
     case actions.ADD_TODO:
-      return {
-        ...state,
-        filter: [ ...state.todos, action.todoo ]
-      }
+      return [ ...state.todos, currentAction.todoo ];
 
-      case actions.DELETE_TODO:
-        return {
-          ...state,
-          todos: state.todos.filter( (currentTodo, currentTodoIndex) => currentTodoIndex !== action.index )
+    case actions.DELETE_TODO:
+      return state.filter( (currentTodo, currentTodoIndex) => currentTodoIndex !== currentAction.index );
+
+    case actions.TOGGLE_TODO:
+      return state.map( ( currentTodo, currentTodoIndex ) => {
+
+        if ( currentTodoIndex === currentAction.index ) {
+          currentTodo.done = !currentTodo.doone;
         }
+        return currentTodo;
 
-      case actions.SET_FILTER:
-        return {
-          ...state,
-          filter: action.filter
-        }
-
-      case actions.TOGGLE_TODO:
-        return {
-          ...state,
-          todos: state.todos.map( ( currentTodo, currentTodoIndex ) => {
-
-            if ( currentTodoIndex === action.index ) {
-              currentTodo.done = !currentTodo.doone;
-            }
-            return currentTodo;
-
-          })
-        }
+      })
   
     default:
-      return state
+      return state;
+  }
+}
+
+const filterReducer = (state, currentAction) => {
+  
+  switch ( currentAction.type ) {
+
+    case actions.SET_FILTER:
+      return currentAction.filter
+
+    default:
+      return state;
+
+  }
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Reducer uniquement utilisé par le store !
+ * -----------------------------------------------------------------------------
+ */
+export const todoReducer = (state, currentAction) => {
+
+  return {
+    todos: todosReducer( state.todos, currentAction ),
+    filter: filterReducer( state.filter, currentAction )
   }
 
 }
