@@ -1,14 +1,24 @@
-const ADD_TODO    = "add_todo";
-const DELETE_TODO = "delete_todo";
-const SET_FILTER  = "set_filter";
-const TOGGLE_TODO = "toggle_todo";
+/* 
+ * -----------------------------------------------------------------------------
+ * CONSTANTE UNIQUE - (pour éviter toute erreur de typographie)
+ * -----------------------------------------------------------------------------
+*/
+const ADD_TODO    = "ADD_TODO";
+const DELETE_TODO = "DELETE_TODO";
+const SET_FILTER  = "SET_FILTER";
+const TOGGLE_TODO = "TOGGLE_TODO";
 
 export const visibilityFilters = {
-  SHOW_ALL: 'show_all',
-  SHOW_DONE: 'show_done',
-  SHOW_ACTIVE: 'show_active'
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_DONE: 'SHOW_DONE',
+  SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
+/* 
+ * -----------------------------------------------------------------------------
+ * ACTION CREATORS - (exporter pour les ré-utiliser dans les reducers)
+ * -----------------------------------------------------------------------------
+*/
 export const addTodo = ( todo ) => {
   return {
     type: ADD_TODO,
